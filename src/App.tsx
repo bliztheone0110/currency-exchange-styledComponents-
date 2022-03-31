@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
+import { ICurrencyData } from './interfaces/ICurrencyData';
+import Header from './components/header/Header';
+import Navigation from './components/navigation/Navigation';
+import GlobalStyles from './styles/global';
+import { ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme } from './styles/theme';
+import { Route, Routes } from 'react-router-dom';
+import MainPageContainer from './pages/mainPage/MainPageContainer';
+import RatesContainer from './pages/rates/RatesContainer';
 
 function App() {
+  const [isThemeDark, setIsThemeDark] = useState(true)
+  const [isNavOpen, setIsNavOpen] = useState(true)
+
+  const changeTheme = () => {
+    setIsThemeDark(prev => !prev)
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={isThemeDark ? darkTheme : lightTheme}>
+        <Header />
+        <Navigation changeTheme={changeTheme} isThemeDark={isThemeDark}/>
+        <Routes>
+          <Route path="/" element={<MainPageContainer />}></Route>
+          <Route path="/rates" element={<RatesContainer />}></Route>
+        </Routes>
+        <GlobalStyles />
+      </ThemeProvider>
+    </>
   );
 }
 
