@@ -9,6 +9,8 @@ const MainPageContainer: FC = () => {
   const [currencyB, setCurrencyB] = useState('USD')
   const [currencyData, setCurrencyData] = useState({} as ICurrencyList)
   const [currencyList, setCurrencyList] = useState([] as string[])
+  const [inputValueA, setInputValueA] = useState(0)
+  const [inputValueB, setInputValueB] = useState(0)
   const [ABrate, setABrate] = useState(1)
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const MainPageContainer: FC = () => {
 
         setCurrencyData(data.quotes)
         setCurrencyList(currencyList)
+        setABrate(data.quotes['USDRUB'])
       })
   }, [])
 
@@ -35,18 +38,42 @@ const MainPageContainer: FC = () => {
     setABrate(newRateAB)
   }, [currencyA, currencyB])
 
+  const inputHandlerA = (value: string): void => {
+    const finalValue = value.replace(/[^0-9\.]/g, "");
+    let calculatedResult = Number(finalValue) / ABrate;
+
+    setInputValueA(Number(finalValue))
+    setInputValueB(calculatedResult)
+  }
+
+  const inputHandlerB = (value: string): void => {
+    const finalValue = value.replace(/[^0-9\.]/g, "");
+    let calculatedResult = Number(finalValue) * ABrate;
+
+    setInputValueB(Number(finalValue))
+    setInputValueA(calculatedResult)
+  }
+
   const onChangeCurrencyA = (currency: string): void => {
     setCurrencyA(currency)
+    setInputValueB(0)
+    setInputValueA(0)
   }
 
   const onChangeCurrencyB = (currency: string): void => {
     setCurrencyB(currency)
+    setInputValueB(0)
+    setInputValueA(0)
   }
 
   return (
     <MainPage
       currencyA={currencyA}
       currencyB={currencyB}
+      inputValueA={inputValueA}
+      inputValueB={inputValueB}
+      inputHandlerA={inputHandlerA}
+      inputHandlerB={inputHandlerB}
       currencyList={currencyList}
       onChangeCurrencyA={onChangeCurrencyA}
       onChangeCurrencyB={onChangeCurrencyB}

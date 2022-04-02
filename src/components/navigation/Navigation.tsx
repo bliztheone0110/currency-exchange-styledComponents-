@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ThemeToggler from './../themeToggler/ThemeToggler';
 import Arrow from './Arrow';
-import { SimpleText } from './../UI/SimpleText';
+import { Text } from '../UI/Text';
 
 const Navigation = styled.div<{isNavOpen: boolean}>`
     position: relative;
@@ -42,10 +42,10 @@ const StyledNavigation: FC<StyledNavigationProps> = (props) => {
             <ThemeToggler isThemeDark={props.isThemeDark} changeTheme={props.changeTheme} />
             <nav>
                 <Link to='./'>
-                    <SimpleText nowrap >Обменник валют</SimpleText>
+                    <Text nowrap >Обменник валют</Text>
                 </Link>
                 <Link to='./rates'>
-                    <SimpleText nowrap margin={0}>Курсы валют</SimpleText>
+                    <Text nowrap margin={0}>Курсы валют</Text>
                 </Link>
             </nav>
             <Arrow isNavOpen={props.isNavOpen} toggleNavVisibility={props.toggleNavVisibility} />

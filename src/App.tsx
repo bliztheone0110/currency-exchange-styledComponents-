@@ -33,10 +33,12 @@ function App() {
             isNavOpen={isNavOpen}
             toggleNavVisibility={toggleNavVisibility}
           />
-          <Routes>
-            <Route path="/" element={<MainPageContainer />}></Route>
-            <Route path="/rates" element={<RatesContainer />}></Route>
-          </Routes>
+          <Container type="flex" flexWrap='wrap' width="auto" margin="0" padding="20px">
+            <Routes>
+              <Route path="/" element={<MainPageContainer />}></Route>
+              <Route path="/rates" element={<RatesContainer />}></Route>
+            </Routes>
+          </Container>
         </Container>
         <GlobalStyles />
       </ThemeProvider>

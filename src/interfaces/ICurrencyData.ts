@@ -1,5 +1,5 @@
 export interface ICurrencyList {
-    [key: `USD${string}`]: number
+    [key: string]: number
 }
 
 export interface ICurrencyData {
