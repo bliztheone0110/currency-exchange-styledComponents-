@@ -1,14 +1,18 @@
 import { createGlobalStyle } from "styled-components";
-import { baseTheme } from './theme';
 
 export default createGlobalStyle`
     * {
         box-sizing: border-box;
-        transition: ${baseTheme.durations.ms300}ms;
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
     }
 
     body {
         margin: 0;
         padding: 0;
+        background-color: ${({ theme  }) => theme.colors.bodyBackground};
+        color: ${({ theme  }) => theme.colors.font};
+        transition: ${({ theme }) => theme.durations.ms300 + 'ms'};
     }
 `

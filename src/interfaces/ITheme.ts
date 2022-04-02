@@ -7,8 +7,9 @@ export interface ITheme {
     colors: {
       header: string
       bodyBackground: string
+      contentBackground: string
       
-      font: string,
+      font: string
     }
   
     media: {
@@ -22,8 +23,15 @@ export interface ITheme {
       nav: { width: number }
       container: { width: number }
     }
+
+    fontSizes: {
+      normal: number;
+      large: number;
+      title: number;
+  }
   
     durations: {
+      ms100: number
       ms300: number
     }
   }

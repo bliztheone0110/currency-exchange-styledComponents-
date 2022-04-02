@@ -1,1 +1,2 @@
-export const a = 1
+import styled from 'styled-components';
+

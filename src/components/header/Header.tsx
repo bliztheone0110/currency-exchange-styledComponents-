@@ -10,6 +10,7 @@ const HeaderContainer = styled.div<{imgSize?: string, padding?: string}>`
     padding: ${props => props.padding};
     box-shadow: 0 8px 6px -6px black;
     background-color: ${({ theme  }) => theme.colors.header};
+    transition: ${({ theme }) => theme.durations.ms300 + 'ms'};
 
     & img {
         display: block;

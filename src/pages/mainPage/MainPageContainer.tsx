@@ -13,6 +13,9 @@ const MainPageContainer: FC = () => {
 
   useEffect(() => {
     // sadly, free version of API have limited number of requests per month, so I can't make a request on every currency change.
+    // api<ICurrencyData>('http://api.currencylayer.com/live?access_key=0fb1f1453c2634cd7a84c736bb3f4292&format=1\')
+
+    // use mock for dev
     api<ICurrencyData>('./test.json')
       .then(data => {
         let currencyList = [];
@@ -47,6 +50,7 @@ const MainPageContainer: FC = () => {
       currencyList={currencyList}
       onChangeCurrencyA={onChangeCurrencyA}
       onChangeCurrencyB={onChangeCurrencyB}
+      ABrate={ABrate}
     />
   );
 };

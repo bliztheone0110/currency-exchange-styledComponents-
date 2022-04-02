@@ -1,28 +1,54 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import ThemeToggler from './../themeToggler/ThemeToggler';
+import Arrow from './Arrow';
+import { SimpleText } from './../UI/SimpleText';
 
-const Navigation = styled.nav`
-    padding: 20px;
+const Navigation = styled.div<{isNavOpen: boolean}>`
+    position: relative;
+    width: 100%;
+    max-width: ${({isNavOpen}) => isNavOpen ? '200px' : '10px'};
+    background-color: ${({ theme }) => theme.colors.contentBackground};
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: ${({isNavOpen}) => isNavOpen ? '20px' : '20px 0 20px 15px'};
+    margin-top: 20px;
+    overflow: hidden;
+    transition: 300ms;
+
+    & * {
+        display: ${({isNavOpen}) => isNavOpen ? '' : '0'};
+        transition: 100ms;
+    }
 
     & a {
         display: block;
-        color: black;
+        color: ${({ theme }) => theme.colors.font};
+        opacity: 1;
     }
 `
 
 type StyledNavigationProps = {
     changeTheme: () => void;
     isThemeDark: boolean;
+    isNavOpen: boolean;
+    toggleNavVisibility: () => void;
 }
 
 const StyledNavigation: FC<StyledNavigationProps> = (props) => {
     return (
-        <Navigation>
+        <Navigation isNavOpen={props.isNavOpen}>
             <ThemeToggler isThemeDark={props.isThemeDark} changeTheme={props.changeTheme} />
-            <Link to='./'>Обменник валют</Link>
-            <Link to='./rates'>Курсы валют</Link>
+            <nav>
+                <Link to='./'>
+                    <SimpleText nowrap >Обменник валют</SimpleText>
+                </Link>
+                <Link to='./rates'>
+                    <SimpleText nowrap margin={0}>Курсы валют</SimpleText>
+                </Link>
+            </nav>
+            <Arrow isNavOpen={props.isNavOpen} toggleNavVisibility={props.toggleNavVisibility} />
         </Navigation>
     );
 };

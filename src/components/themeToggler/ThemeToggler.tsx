@@ -11,8 +11,9 @@ const ThemeToggler = styled.div<{ isThemeDark: boolean }>`
     justify-content: space-between;
     padding: 5px;
     background-color: #ffffff;
-    border: 1px solid lightblue;
+    border: 1px solid #4cc5ee;
     border-radius: 14px;
+    margin-bottom: 25px;
 
     &:hover {
         cursor: pointer;
@@ -27,10 +28,11 @@ const ThemeToggler = styled.div<{ isThemeDark: boolean }>`
         height: 22px;
         position: absolute;
         border-radius: 50%;
-        background: gray;
-        left: ${({ isThemeDark }) => isThemeDark ? '4px' : '34px'};
+        background: #4cc5ee;
+        left: ${({ isThemeDark }) => isThemeDark ? '3px' : '33px'};
         top: 2px;
-        transition: 400ms;
+        transition: 400ms ease-in-out;
+        box-shadow: 0px -1px 8px -3px rgba(34, 60, 80, 0.2);
     }
 `
 
@@ -42,9 +44,9 @@ type StyledThemeTogglerProps = {
 const StyledThemeToggler: FC<StyledThemeTogglerProps> = (props) => {
     return (
         <ThemeToggler isThemeDark={props.isThemeDark} onClick={() => props.changeTheme()}>
-            <img src={dark} alt='dark' />
-            <span></span>
             <img src={light} alt='light' />
+            <span></span>
+            <img src={dark} alt='dark' />
         </ThemeToggler>
     );
 };

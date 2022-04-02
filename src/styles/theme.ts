@@ -5,6 +5,7 @@ export const baseTheme: ITheme = {
     colors: {
         header: '#fafafa',
         bodyBackground: '#033968',
+        contentBackground: '#c9deff',
 
         font: '#000000',
     },
@@ -21,7 +22,14 @@ export const baseTheme: ITheme = {
         container: { width: 1140 }
     },
 
+    fontSizes: {
+        normal: 16,
+        large: 20,
+        title: 24,
+    },
+
     durations: {
+        ms100: 100,
         ms300: 300,
     },
 }
@@ -32,9 +40,10 @@ export const darkTheme: DefaultTheme = {
 
     colors: {
         header: '#a0a5ee',
-        bodyBackground: '#a7b8d6',
+        bodyBackground: '#033968',
+        contentBackground: '#2b2b2b',
 
-        font: '#000000',
+        font: '#f9f9f9',
     },
 
     media: {
@@ -49,7 +58,14 @@ export const darkTheme: DefaultTheme = {
         container: { width: 1140 }
     },
 
+    fontSizes: {
+        normal: 16,
+        large: 20,
+        title: 24,
+    },
+
     durations: {
+        ms100: 100,
         ms300: 300,
     },
 }
@@ -61,9 +77,10 @@ export const lightTheme: DefaultTheme = {
 
     colors: {
         header: '#fafafa',
-        bodyBackground: '#033968',
+        bodyBackground: '#f9f9f9',
+        contentBackground: '#c9deff',
 
-        font: '#000000',
+        font: '#0b0b0b',
     },
 
     media: {
@@ -73,12 +90,19 @@ export const lightTheme: DefaultTheme = {
         small: '(max-width: 540px)',
     },
 
+    fontSizes: {
+        normal: 16,
+        large: 20,
+        title: 24,
+    },
+
     sizes: {
         nav: { width: 250 },
         container: { width: 1140 }
     },
 
     durations: {
+        ms100: 100,
         ms300: 300,
     },
 }
