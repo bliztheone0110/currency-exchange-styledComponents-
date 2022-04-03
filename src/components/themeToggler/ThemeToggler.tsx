@@ -34,6 +34,10 @@ const ThemeToggler = styled.div<{ isThemeDark: boolean }>`
         transition: 400ms ease-in-out;
         box-shadow: 0px -1px 8px -3px rgba(34, 60, 80, 0.2);
     }
+
+    @media ${({theme}) => theme.media.medium} {
+        margin-bottom: 0;
+    }
 `
 
 type StyledThemeTogglerProps = {

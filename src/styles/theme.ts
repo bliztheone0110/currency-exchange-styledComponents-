@@ -13,7 +13,7 @@ export const baseTheme: ITheme = {
     media: {
         extraLarge: '(max-width: 1140px)',
         large: '(max-width: 960px)',
-        medium: '(max-width: 720px)',
+        medium: '(max-width: 768px)',
         small: '(max-width: 540px)',
     },
 
@@ -49,7 +49,7 @@ export const darkTheme: DefaultTheme = {
     media: {
         extraLarge: '(max-width: 1140px)',
         large: '(max-width: 960px)',
-        medium: '(max-width: 720px)',
+        medium: '(max-width: 768px)',
         small: '(max-width: 540px)',
     },
 
@@ -77,7 +77,7 @@ export const lightTheme: DefaultTheme = {
 
     colors: {
         header: '#fafafa',
-        bodyBackground: '#f9f9f9',
+        bodyBackground: '#e9e9e9',
         contentBackground: '#c9deff',
 
         font: '#0b0b0b',
@@ -86,7 +86,7 @@ export const lightTheme: DefaultTheme = {
     media: {
         extraLarge: '(max-width: 1140px)',
         large: '(max-width: 960px)',
-        medium: '(max-width: 720px)',
+        medium: '(max-width: 768px)',
         small: '(max-width: 540px)',
     },
 

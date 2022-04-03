@@ -9,10 +9,25 @@ import { Route, Routes } from 'react-router-dom';
 import MainPageContainer from './pages/mainPage/MainPageContainer';
 import RatesContainer from './pages/rates/RatesContainer';
 import Container from './components/container/Container';
+import NavigationMobile from './components/navigationMobile/NavigationMobile';
 
 function App() {
   const [isThemeDark, setIsThemeDark] = useState(true)
   const [isNavOpen, setIsNavOpen] = useState(true)
+  const isMobile = window.innerWidth > 768 ? false : true
+  const [isMobVersion, setIsMobVersion] = useState(isMobile)
+
+  function updateSize() {
+    if (window.innerWidth > 768 && isMobVersion) {
+      setIsMobVersion(false)
+    }
+
+    if (window.innerWidth <= 768 && !isMobVersion) {
+      setIsMobVersion(true)
+    }
+  }
+
+  window.addEventListener('resize', updateSize);
 
   const changeTheme = () => {
     setIsThemeDark(prev => !prev)
@@ -26,14 +41,20 @@ function App() {
     <>
       <ThemeProvider theme={isThemeDark ? darkTheme : lightTheme}>
         <Header />
+        {
+          isMobVersion && <NavigationMobile changeTheme={changeTheme} isThemeDark={isThemeDark} />
+        }
         <Container type='flex'>
-          <Navigation
-            changeTheme={changeTheme}
-            isThemeDark={isThemeDark}
-            isNavOpen={isNavOpen}
-            toggleNavVisibility={toggleNavVisibility}
-          />
-          <Container type="flex" flexWrap='wrap' width="auto" margin="0" padding="20px">
+          {
+            !isMobVersion
+            && <Navigation
+              changeTheme={changeTheme}
+              isThemeDark={isThemeDark}
+              isNavOpen={isNavOpen}
+              toggleNavVisibility={toggleNavVisibility}
+            />
+          }
+          <Container type="flex" flexWrap='wrap' width="100%" margin="0" padding="20px" justifyContent='center'>
             <Routes>
               <Route path="/" element={<MainPageContainer />}></Route>
               <Route path="/rates" element={<RatesContainer />}></Route>
